@@ -1,3 +1,5 @@
+import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -25,6 +27,8 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 	final int END = 2;
 	int currentState = MENU;
 	Timer frameDraw;
+	Font titleFont = new Font("Arial", Font.PLAIN, 48);
+	Font startFont = new Font("Arial", Font.PLAIN, 25);
 	
 	
 	GamePanel() {
@@ -33,6 +37,15 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 	}
 	
 	void drawMenuState(Graphics g) {
+		g.setColor(Color.lightGray);
+		g.fillRect(0, 0, Game2048.WIDTH, Game2048.HEIGHT);
+		g.setFont(titleFont);
+		g.setColor(Color.GRAY);
+		g.drawString("2048", 190, 90);
+		
+		g.setFont(startFont);
+		g.setColor(Color.GRAY);
+		g.drawString("Press ENTER to start", 120, 280);
 		
 	}
 	
@@ -56,7 +69,37 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 	
 	@Override
 	public void keyPressed(KeyEvent e) {
-		// TODO Auto-generated method stub
+		if (e.getKeyCode()==KeyEvent.VK_ENTER) {
+			if (currentState == END) {
+				currentState = MENU;
+			}
+			else if (currentState == MENU) {
+				currentState = GAME;
+			}
+			else {
+				currentState++;
+			}
+		}
+		
+		if (e.getKeyCode()==KeyEvent.VK_SPACE) {
+			
+		}
+		
+		if (e.getKeyCode()==KeyEvent.VK_UP) {
+			System.out.println("UP");
+		}	
+		
+		if (e.getKeyCode()==KeyEvent.VK_DOWN) {
+			System.out.println("DOWN");
+		}
+	
+		if (e.getKeyCode()==KeyEvent.VK_LEFT) {
+			System.out.println("LEFT");
+		}
+		
+		if (e.getKeyCode()==KeyEvent.VK_RIGHT) {
+			System.out.println("RIGHT");
+		}
 		
 	}
 
@@ -74,7 +117,15 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
+		if(currentState == MENU){
+		    updateMenuState();
+		}else if(currentState == GAME){
+		    updateGameState();
+		}else if(currentState == END){
+		    updateEndState();
+		}
+		System.out.println("action");
+		repaint();
 		
 	}
 	
