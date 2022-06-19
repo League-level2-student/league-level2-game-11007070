@@ -5,6 +5,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.util.Random;
+
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
@@ -29,6 +31,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 	Timer frameDraw;
 	Font titleFont = new Font("Arial", Font.PLAIN, 48);
 	Font startFont = new Font("Arial", Font.PLAIN, 25);
+	GameBoard gameBoard;
 	
 	
 	GamePanel() {
@@ -76,6 +79,8 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 			}
 			else if (currentState == MENU) {
 				currentState = GAME;
+				gameBoard = new GameBoard();
+				
 			}
 			else {
 				currentState++;
@@ -88,21 +93,26 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 		
 		if (e.getKeyCode()==KeyEvent.VK_UP) {
 			System.out.println("UP");
+			gameBoard.moveUp();
 		}	
 		
 		if (e.getKeyCode()==KeyEvent.VK_DOWN) {
 			System.out.println("DOWN");
+			gameBoard.moveDown();
 		}
 	
 		if (e.getKeyCode()==KeyEvent.VK_LEFT) {
 			System.out.println("LEFT");
+			gameBoard.moveLeft();
 		}
 		
 		if (e.getKeyCode()==KeyEvent.VK_RIGHT) {
 			System.out.println("RIGHT");
+			gameBoard.moveRight();
 		}
 		
 	}
+	
 
 	@Override
 	public void keyReleased(KeyEvent e) {
@@ -125,7 +135,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 		}else if(currentState == END){
 		    updateEndState();
 		}
-		System.out.println("action");
+		//System.out.println("action");
 		repaint();
 		
 	}
