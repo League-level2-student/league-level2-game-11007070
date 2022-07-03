@@ -31,6 +31,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 	Timer frameDraw;
 	Font titleFont = new Font("Arial", Font.PLAIN, 48);
 	Font startFont = new Font("Arial", Font.PLAIN, 25);
+	Font scoreFont = new Font("Arial", Font.PLAIN, 25);
 	GameBoard gameBoard;
 	
 	
@@ -55,6 +56,10 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 	void drawGameState(Graphics g) {
 		g.setColor(Color.lightGray);
 		g.fillRect(0, 0, Game2048.WIDTH, Game2048.HEIGHT);
+		
+		g.setFont(scoreFont);
+		g.setColor(Color.GRAY);
+		g.drawString("Score: " + gameBoard.score, 360, 30);
 	}
 	
 	void drawEndState(Graphics g) {
@@ -96,8 +101,11 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 			gameBoard.moveUp();
 			gameBoard.addNewTile();
 			gameBoard.printBoard();
-			gameBoard.checkWin();
-			gameBoard.checkLose();
+			boolean won = gameBoard.checkWin();
+			boolean lose = gameBoard.checkLose();
+			if (won == true || lose == true) {
+				frameDraw.stop();
+			}
 		}	
 		
 		if (e.getKeyCode()==KeyEvent.VK_DOWN) {
@@ -105,8 +113,11 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 			gameBoard.moveDown();
 			gameBoard.addNewTile();
 			gameBoard.printBoard();
-			gameBoard.checkWin();
-			gameBoard.checkLose();
+			boolean won = gameBoard.checkWin();
+			boolean lose = gameBoard.checkLose();
+			if (won == true || lose == true) {
+				frameDraw.stop();
+			}
 		}
 	
 		if (e.getKeyCode()==KeyEvent.VK_LEFT) {
@@ -114,8 +125,11 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 			gameBoard.moveLeft();
 			gameBoard.addNewTile();
 			gameBoard.printBoard();
-			gameBoard.checkWin();
-			gameBoard.checkLose();
+			boolean won = gameBoard.checkWin();
+			boolean lose = gameBoard.checkLose();
+			if (won == true || lose == true) {
+				frameDraw.stop();
+			}
 		}
 		
 		if (e.getKeyCode()==KeyEvent.VK_RIGHT) {
@@ -123,8 +137,11 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 			gameBoard.moveRight();
 			gameBoard.addNewTile();
 			gameBoard.printBoard();
-			gameBoard.checkWin();
-			gameBoard.checkLose();
+			boolean won = gameBoard.checkWin();
+			boolean lose = gameBoard.checkLose();
+			if (won == true || lose == true) {
+				frameDraw.stop();
+			}
 		}
 		
 	}
