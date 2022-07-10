@@ -14,8 +14,8 @@ public class GameBoard {
 						gameBoard[i+1][j] = temp;
 					}
 					else if (gameBoard[i][j].value == gameBoard[i+1][j].value) {
-						gameBoard[i+1][j].value += gameBoard[i][j].value;
 						score += gameBoard[i+1][j].value + gameBoard[i][j].value;
+						gameBoard[i+1][j].value += gameBoard[i][j].value;
 						gameBoard[i][j].value = 0;
 					}
 				}
@@ -33,8 +33,8 @@ public class GameBoard {
 						gameBoard[i][j+1] = temp;
 					}
 					else if (gameBoard[i][j].value == gameBoard[i][j+1].value) {
-						gameBoard[i][j+1].value += gameBoard[i][j].value;
 						score += gameBoard[i][j+1].value + gameBoard[i][j].value;
+						gameBoard[i][j+1].value += gameBoard[i][j].value;
 						gameBoard[i][j].value = 0;
 					}
 				}
@@ -52,8 +52,8 @@ public class GameBoard {
 						gameBoard[i][j-1] = temp;
 					}
 					else if (gameBoard[i][j].value == gameBoard[i][j-1].value) {
-						gameBoard[i][j-1].value += gameBoard[i][j].value;
 						score += gameBoard[i][j-1].value + gameBoard[i][j].value;
+						gameBoard[i][j-1].value += gameBoard[i][j].value;
 						gameBoard[i][j].value = 0;
 					}
 				}
@@ -71,8 +71,8 @@ public class GameBoard {
 						gameBoard[i-1][j] = temp;
 					}
 					else if (gameBoard[i][j].value == gameBoard[i-1][j].value) {
-						gameBoard[i-1][j].value += gameBoard[i][j].value;
 						score += gameBoard[i-1][j].value + gameBoard[i][j].value;
+						gameBoard[i-1][j].value += gameBoard[i][j].value;
 						gameBoard[i][j].value = 0;
 					}
 				}
@@ -181,7 +181,7 @@ public class GameBoard {
 			}
 			System.out.println();
 		}
-		
+		System.out.println("Score: " + score);
 	}
 	
 	public void addNewTile() {
@@ -210,6 +210,7 @@ public class GameBoard {
 			for (int j = 0; j < gameBoard[i].length; j++) {
 				if (gameBoard[i][j].value == 2048) {
 					JOptionPane.showMessageDialog(null, "Congrats! You've won!");
+					System.out.println("WON");
 					won = true;
 				}
 			}
@@ -236,6 +237,7 @@ public class GameBoard {
 			if (mergeL == false && mergeR == false && mergeD == false & mergeU == false) {
 				lose = true;
 				JOptionPane.showMessageDialog(null, "Sorry but you lost!");
+				System.out.println("LOSE");
 			}
 		}
 		return lose;

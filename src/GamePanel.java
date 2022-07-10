@@ -32,6 +32,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 	Font titleFont = new Font("Arial", Font.PLAIN, 48);
 	Font startFont = new Font("Arial", Font.PLAIN, 25);
 	Font scoreFont = new Font("Arial", Font.PLAIN, 25);
+	Font endFont = new Font("Arial", Font.PLAIN, 48);
 	GameBoard gameBoard;
 	
 	
@@ -59,11 +60,16 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 		
 		g.setFont(scoreFont);
 		g.setColor(Color.GRAY);
-		g.drawString("Score: " + gameBoard.score, 360, 30);
+		g.drawString("Score: " + gameBoard.score, 320, 30);
 	}
 	
 	void drawEndState(Graphics g) {
+		g.setColor(Color.lightGray);
+		g.fillRect(0, 0, Game2048.WIDTH, Game2048.HEIGHT);
 		
+		g.setFont(endFont);
+		g.setColor(Color.GRAY);
+		g.drawString("End of Game", 190, 90);
 	}
 	
 	void updateMenuState() {  
@@ -105,6 +111,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 			boolean lose = gameBoard.checkLose();
 			if (won == true || lose == true) {
 				frameDraw.stop();
+				currentState = END;
 			}
 		}	
 		
@@ -117,6 +124,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 			boolean lose = gameBoard.checkLose();
 			if (won == true || lose == true) {
 				frameDraw.stop();
+				currentState = END;
 			}
 		}
 	
@@ -129,6 +137,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 			boolean lose = gameBoard.checkLose();
 			if (won == true || lose == true) {
 				frameDraw.stop();
+				currentState = END;
 			}
 		}
 		
@@ -141,6 +150,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 			boolean lose = gameBoard.checkLose();
 			if (won == true || lose == true) {
 				frameDraw.stop();
+				currentState = END;
 			}
 		}
 		
