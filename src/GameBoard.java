@@ -1,3 +1,4 @@
+import java.awt.Graphics;
 import java.util.Random;
 
 import javax.swing.JOptionPane;
@@ -142,7 +143,7 @@ public class GameBoard {
 	GameBoard() {
 		for (int i = 0; i < gameBoard.length; i++) {
 			for (int j = 0; j < gameBoard[i].length; j++) {
-				gameBoard[i][j] = new TileObject();
+				gameBoard[i][j] = new TileObject(i, j, gameBoard[i][j].value);
 			}
 		}
 		
@@ -246,4 +247,14 @@ public class GameBoard {
 	public void countScore() {
 		
 	}
+	
+	public void draw(Graphics g) {
+		for (int i = 0; i < gameBoard.length; i++) {
+			for (int j = 0; j < gameBoard[i].length; j++) {
+				gameBoard[i][j].draw(g);
+			}
+		}
+	}
+	
+	
 }
