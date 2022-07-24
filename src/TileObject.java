@@ -8,22 +8,59 @@ public class TileObject {
 	int tileSize = 70;
 	int x;
 	int y;
+	int valueX;
+	int valueY;
 	int offsetX = 100;
 	int offsetY = 120;
 	Font valueFont = new Font("Arial", Font.PLAIN, 25);
 	
 	public void draw(Graphics g) {
-		g.setColor(Color.GRAY);
+		if (value == 0) {
+			valueT = "";
+			g.setColor(Color.LIGHT_GRAY);
+		}
+		else {
+			valueT = value+"";
+		}
+		
+		if (value == 2) {
+			g.setColor(Color.GRAY);
+		}
+		else if (value == 4) {
+			g.setColor(Color.DARK_GRAY);
+		}
+		else if (value == 8) {
+			g.setColor(Color.yellow);
+		}
+		else if (value == 16) {
+			g.setColor(Color.orange);
+		}
+		else if (value == 32) {
+			g.setColor(Color.getHSBColor(250,173,106));
+		}
+		else if (value == 64) {
+			g.setColor(Color.red);
+		}
+		
 		g.fillRect(x,y, tileSize, tileSize);
 		g.setColor(Color.BLACK);
 		g.drawRect(x,y, tileSize, tileSize);
 		g.setColor(Color.BLACK);
-		g.drawString(valueT, x, y);
+		g.drawString(valueT, valueX, valueY);
 	}
 	
-	TileObject (int i, int j, int value) {
-		x = i*tileSize + offsetX;
-		y = j*tileSize + offsetY;
-		valueT = Integer.toString(value);
+	public void update(int i, int j) {
+		y = i*tileSize + offsetX;
+		x = j*tileSize + offsetY;
+		valueX = x+30;
+		valueY = y+45;
+	}
+	
+	TileObject (int i, int j) {
+		y = i*tileSize + offsetX;
+		x = j*tileSize + offsetY;
+		valueX = x+30;
+		valueY = y+45;
+		//valueT = Integer.toString(value);
 	}
 }

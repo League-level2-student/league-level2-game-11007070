@@ -115,6 +115,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 				frameDraw.stop();
 				currentState = END;
 			}
+			gameBoard.update();
 		}	
 		
 		if (e.getKeyCode()==KeyEvent.VK_DOWN) {
@@ -128,6 +129,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 				frameDraw.stop();
 				currentState = END;
 			}
+			gameBoard.update();
 		}
 	
 		if (e.getKeyCode()==KeyEvent.VK_LEFT) {
@@ -141,6 +143,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 				frameDraw.stop();
 				currentState = END;
 			}
+			gameBoard.update();
 		}
 		
 		if (e.getKeyCode()==KeyEvent.VK_RIGHT) {
@@ -154,6 +157,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 				frameDraw.stop();
 				currentState = END;
 			}
+			gameBoard.update();
 		}
 		
 	}

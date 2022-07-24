@@ -7,86 +7,82 @@ public class GameBoard {
 
 	public void moveDown() {
 		for (int k = 0; k < gameBoard.length; k++) {
-			for (int i = 0; i < gameBoard.length-1; i++) {
+			for (int i = 0; i < gameBoard.length - 1; i++) {
 				for (int j = 0; j < gameBoard[i].length; j++) {
-					if (gameBoard[i][j].value > 0 && gameBoard[i+1][j].value == 0) {
+					if (gameBoard[i][j].value > 0 && gameBoard[i + 1][j].value == 0) {
 						TileObject temp = gameBoard[i][j];
-						gameBoard[i][j] = gameBoard[i+1][j];
-						gameBoard[i+1][j] = temp;
-					}
-					else if (gameBoard[i][j].value == gameBoard[i+1][j].value) {
-						score += gameBoard[i+1][j].value + gameBoard[i][j].value;
-						gameBoard[i+1][j].value += gameBoard[i][j].value;
+						gameBoard[i][j] = gameBoard[i + 1][j];
+						gameBoard[i + 1][j] = temp;
+					} else if (gameBoard[i][j].value == gameBoard[i + 1][j].value) {
+						score += gameBoard[i + 1][j].value + gameBoard[i][j].value;
+						gameBoard[i + 1][j].value += gameBoard[i][j].value;
 						gameBoard[i][j].value = 0;
 					}
 				}
 			}
 		}
 	}
-	
+
 	public void moveRight() {
 		for (int k = 0; k < gameBoard.length; k++) {
 			for (int i = 0; i < gameBoard.length; i++) {
-				for (int j = 0; j < gameBoard[i].length-1; j++) {
-					if (gameBoard[i][j].value > 0 && gameBoard[i][j+1].value == 0) {
+				for (int j = 0; j < gameBoard[i].length - 1; j++) {
+					if (gameBoard[i][j].value > 0 && gameBoard[i][j + 1].value == 0) {
 						TileObject temp = gameBoard[i][j];
-						gameBoard[i][j] = gameBoard[i][j+1];
-						gameBoard[i][j+1] = temp;
-					}
-					else if (gameBoard[i][j].value == gameBoard[i][j+1].value) {
-						score += gameBoard[i][j+1].value + gameBoard[i][j].value;
-						gameBoard[i][j+1].value += gameBoard[i][j].value;
+						gameBoard[i][j] = gameBoard[i][j + 1];
+						gameBoard[i][j + 1] = temp;
+					} else if (gameBoard[i][j].value == gameBoard[i][j + 1].value) {
+						score += gameBoard[i][j + 1].value + gameBoard[i][j].value;
+						gameBoard[i][j + 1].value += gameBoard[i][j].value;
 						gameBoard[i][j].value = 0;
 					}
 				}
 			}
 		}
 	}
-	
+
 	public void moveLeft() {
 		for (int k = 0; k < gameBoard.length; k++) {
 			for (int i = 0; i < gameBoard.length; i++) {
-				for (int j = gameBoard[i].length-1; j > 0; j--) {
-					if (gameBoard[i][j].value > 0 && gameBoard[i][j-1].value == 0) {
+				for (int j = gameBoard[i].length - 1; j > 0; j--) {
+					if (gameBoard[i][j].value > 0 && gameBoard[i][j - 1].value == 0) {
 						TileObject temp = gameBoard[i][j];
-						gameBoard[i][j] = gameBoard[i][j-1];
-						gameBoard[i][j-1] = temp;
-					}
-					else if (gameBoard[i][j].value == gameBoard[i][j-1].value) {
-						score += gameBoard[i][j-1].value + gameBoard[i][j].value;
-						gameBoard[i][j-1].value += gameBoard[i][j].value;
+						gameBoard[i][j] = gameBoard[i][j - 1];
+						gameBoard[i][j - 1] = temp;
+					} else if (gameBoard[i][j].value == gameBoard[i][j - 1].value) {
+						score += gameBoard[i][j - 1].value + gameBoard[i][j].value;
+						gameBoard[i][j - 1].value += gameBoard[i][j].value;
 						gameBoard[i][j].value = 0;
 					}
 				}
 			}
 		}
 	}
-	
+
 	public void moveUp() {
 		for (int k = 0; k < gameBoard.length; k++) {
-			for (int i = gameBoard.length-1; i > 0; i--) {
+			for (int i = gameBoard.length - 1; i > 0; i--) {
 				for (int j = 0; j < gameBoard[i].length; j++) {
-					if (gameBoard[i][j].value > 0 && gameBoard[i-1][j].value == 0) {
+					if (gameBoard[i][j].value > 0 && gameBoard[i - 1][j].value == 0) {
 						TileObject temp = gameBoard[i][j];
-						gameBoard[i][j] = gameBoard[i-1][j];
-						gameBoard[i-1][j] = temp;
-					}
-					else if (gameBoard[i][j].value == gameBoard[i-1][j].value) {
-						score += gameBoard[i-1][j].value + gameBoard[i][j].value;
-						gameBoard[i-1][j].value += gameBoard[i][j].value;
+						gameBoard[i][j] = gameBoard[i - 1][j];
+						gameBoard[i - 1][j] = temp;
+					} else if (gameBoard[i][j].value == gameBoard[i - 1][j].value) {
+						score += gameBoard[i - 1][j].value + gameBoard[i][j].value;
+						gameBoard[i - 1][j].value += gameBoard[i][j].value;
 						gameBoard[i][j].value = 0;
 					}
 				}
 			}
 		}
 	}
-	
+
 	public boolean mergeLeft() {
 		boolean mergeL = false;
 		for (int k = 0; k < gameBoard.length; k++) {
 			for (int i = 0; i < gameBoard.length; i++) {
-				for (int j = gameBoard[i].length-1; j > 0; j--) {
-					if (gameBoard[i][j].value == gameBoard[i][j-1].value) {
+				for (int j = gameBoard[i].length - 1; j > 0; j--) {
+					if (gameBoard[i][j].value == gameBoard[i][j - 1].value) {
 						mergeL = true;
 					}
 				}
@@ -94,13 +90,13 @@ public class GameBoard {
 		}
 		return mergeL;
 	}
-	
+
 	public boolean mergeUp() {
 		boolean mergeU = false;
 		for (int k = 0; k < gameBoard.length; k++) {
-			for (int i = gameBoard.length-1; i > 0; i--) {
+			for (int i = gameBoard.length - 1; i > 0; i--) {
 				for (int j = 0; j < gameBoard[i].length; j++) {
-					if (gameBoard[i][j].value == gameBoard[i-1][j].value) {
+					if (gameBoard[i][j].value == gameBoard[i - 1][j].value) {
 						mergeU = true;
 					}
 				}
@@ -108,13 +104,13 @@ public class GameBoard {
 		}
 		return mergeU;
 	}
-	
+
 	public boolean mergeRight() {
 		boolean mergeR = false;
 		for (int k = 0; k < gameBoard.length; k++) {
 			for (int i = 0; i < gameBoard.length; i++) {
-				for (int j = 0; j < gameBoard[i].length-1; j++) {
-					if (gameBoard[i][j].value == gameBoard[i][j+1].value) {
+				for (int j = 0; j < gameBoard[i].length - 1; j++) {
+					if (gameBoard[i][j].value == gameBoard[i][j + 1].value) {
 						mergeR = true;
 					}
 				}
@@ -122,13 +118,13 @@ public class GameBoard {
 		}
 		return mergeR;
 	}
-	
+
 	public boolean mergeDown() {
 		boolean mergeD = false;
 		for (int k = 0; k < gameBoard.length; k++) {
-			for (int i = 0; i < gameBoard.length-1; i++) {
+			for (int i = 0; i < gameBoard.length - 1; i++) {
 				for (int j = 0; j < gameBoard[i].length; j++) {
-					if (gameBoard[i][j].value == gameBoard[i+1][j].value) {
+					if (gameBoard[i][j].value == gameBoard[i + 1][j].value) {
 						mergeD = true;
 					}
 				}
@@ -136,24 +132,24 @@ public class GameBoard {
 		}
 		return mergeD;
 	}
-	
+
 	TileObject[][] gameBoard = new TileObject[4][4];
-	int score = 0; 
-	
+	int score = 0;
+
 	GameBoard() {
 		for (int i = 0; i < gameBoard.length; i++) {
 			for (int j = 0; j < gameBoard[i].length; j++) {
-				gameBoard[i][j] = new TileObject(i, j, gameBoard[i][j].value);
+				gameBoard[i][j] = new TileObject(i, j);
 			}
 		}
-		
+
 		Random ran = new Random();
-		
+
 		int row = ran.nextInt(gameBoard.length);
 		int col = ran.nextInt(gameBoard[0].length);
-		
+
 		gameBoard[row][col].value = 2;
-		
+
 		boolean sameRow = true;
 		boolean sameCol = true;
 		int row2 = 0;
@@ -161,21 +157,21 @@ public class GameBoard {
 		while (sameRow && sameCol) {
 			row2 = ran.nextInt(gameBoard.length);
 			col2 = ran.nextInt(gameBoard[0].length);
-			
+
 			if (row != row2) {
 				sameRow = false;
 			}
 			if (col != col2)
 				sameCol = false;
 		}
-		
-		gameBoard [row2][col2].value = 2;
-		
+
+		gameBoard[row2][col2].value = 2;
+
 		printBoard();
 	}
-	
+
 	public void printBoard() {
-		
+
 		for (int i = 0; i < gameBoard.length; i++) {
 			for (int j = 0; j < gameBoard[i].length; j++) {
 				System.out.print(gameBoard[i][j].value + " ");
@@ -184,27 +180,27 @@ public class GameBoard {
 		}
 		System.out.println("Score: " + score);
 	}
-	
+
 	public void addNewTile() {
 		Random ran = new Random();
-		
+
 		boolean isThere = true;
 		int row = 0;
 		int col = 0;
-		
+
 		while (isThere) {
 			row = ran.nextInt(gameBoard.length);
 			col = ran.nextInt(gameBoard[0].length);
-			
+
 			if (gameBoard[row][col].value == 0) {
 				isThere = false;
 			}
-			
+
 		}
-		
-		gameBoard [row][col].value = 2;
+
+		gameBoard[row][col].value = 2;
 	}
-	
+
 	public boolean checkWin() {
 		boolean won = false;
 		for (int i = 0; i < gameBoard.length; i++) {
@@ -218,7 +214,7 @@ public class GameBoard {
 		}
 		return won;
 	}
-	
+
 	public boolean checkLose() {
 		boolean lose = false;
 		boolean zeroTiles = false;
@@ -233,7 +229,7 @@ public class GameBoard {
 		boolean mergeR = mergeRight();
 		boolean mergeD = mergeDown();
 		boolean mergeU = mergeUp();
-		
+
 		if (zeroTiles == false) {
 			if (mergeL == false && mergeR == false && mergeD == false & mergeU == false) {
 				lose = true;
@@ -243,11 +239,11 @@ public class GameBoard {
 		}
 		return lose;
 	}
-	
+
 	public void countScore() {
-		
+
 	}
-	
+
 	public void draw(Graphics g) {
 		for (int i = 0; i < gameBoard.length; i++) {
 			for (int j = 0; j < gameBoard[i].length; j++) {
@@ -256,5 +252,12 @@ public class GameBoard {
 		}
 	}
 	
-	
+	public void update() {
+		for (int i = 0; i < gameBoard.length; i++) {
+			for (int j = 0; j < gameBoard[i].length; j++) {
+				gameBoard[i][j].update(i, j);
+			}
+		}
+	}
+
 }
