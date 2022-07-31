@@ -41,6 +41,21 @@ public class TileObject {
 		else if (value == 64) {
 			g.setColor(Color.red);
 		}
+		else if (value == 128) {
+			g.setColor(Color.green);
+		}
+		else if (value == 256) {
+			g.setColor(Color.CYAN);
+		}
+		else if (value == 512) {
+			g.setColor(Color.BLUE);
+		}
+		else if (value == 1024) {
+			g.setColor(Color.magenta);
+		}
+		else if (value == 2048) {
+			g.setColor(Color.pink);
+		}
 		
 		g.fillRect(x,y, tileSize, tileSize);
 		g.setColor(Color.BLACK);
